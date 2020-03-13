@@ -1,0 +1,9 @@
+<div class="card" style="width: 30rem;">
+    <div class="card-body">
+        <a [routerLink]="['/book-details', bookItem.title]" routeLinkActive="active">
+            <h5 class="card-title">{{bookItem.title}}</h5>
+        </a>
+        <h6 class="card-subtitle mb-2 text-muted">{{bookItem.author}}</h6>
+        <div class="card-text">{{bookItem.year}}</div>
+    </div>
+</div>
