@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { Book } from 'src/app/model/book';
 import { BookDataService } from './book-data.service';
-import { groupBy, mergeMap, map, toArray, tap } from 'rxjs/operators';
+import { groupBy, mergeMap, map, toArray, tap, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,10 @@ export class BookService {
   fetchBooksByYear(): Observable<Book[]> {
     const books$ = this.httpClient.get<Book[]>(this.url);
     const sortedByYear$ = books$.pipe(
-      map(books => books.sort((x, y) => x.year - y.year))
+      map(books => {
+        const filteredBooks = books.filter(book => book.year > 1800);
+        return filteredBooks.sort((x, y) => x.year - y.year);
+      })
     );
 
     return sortedByYear$;
@@ -33,7 +36,10 @@ export class BookService {
   fetchBooksByTitle(): Observable<Book[]> {
     const books$ = this.httpClient.get<Book[]>(this.url);
     const sortedByTitle$ = books$.pipe(
-      map(books => books.sort((x, y) => x.title > y.title ? 1 : x.title < y.title ? -1 : 0))
+      map(books => {
+        const filteredBooks = books.filter(book => book.year > 1800);
+        return filteredBooks.sort((x, y) => x.title > y.title ? 1 : x.title < y.title ? -1 : 0);
+      })
     );
 
     return sortedByTitle$;
