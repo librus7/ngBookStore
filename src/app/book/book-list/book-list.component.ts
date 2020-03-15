@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class BookListComponent implements OnInit {
   active: number;
   books: Book[];
-  book$: Observable<Book>;
+  books$: Observable<Book[]>;
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
@@ -19,19 +19,19 @@ export class BookListComponent implements OnInit {
   }
 
   fetchBookList(): void {
-    let book$;
+    let books$;
     switch (this.active) {
       case 1:
-        book$ = this.bookService.fetchBooksByTitle();
+        books$ = this.bookService.fetchBooksByTitle();
         break;
       case 2:
-        book$ = this.bookService.fetchBooksByYear();
+        books$ = this.bookService.fetchBooksByYear();
         break;
       default:
-        book$ = this.bookService.fetchBooksByTitle();
+        books$ = this.bookService.fetchBooksByTitle();
         break;
     }
 
-    this.book$ = book$;
+    this.books$ = books$;
   }
 }
