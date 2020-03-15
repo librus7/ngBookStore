@@ -1,5 +1,24 @@
 <h2>Book List</h2>
 
-<div *ngFor="let book of books">
-    <bs-book [bookItem]="book"></bs-book>
-</div>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+        <a ngbNavLink>By Title</a>
+        <ng-template ngbNavContent>
+            <div *ngFor="let book of book$ | async">
+                <bs-book [bookItem]="book"></bs-book>
+            </div>
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+        <a ngbNavLink>By Year</a>
+        <ng-template ngbNavContent>
+            <div *ngFor="let book of book$ | async">
+                <bs-book [bookItem]="book"></bs-book>
+            </div>
+        </ng-template>
+    </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<pre>Active: {{ active }}</pre>
