@@ -1,16 +1,16 @@
 <div class="card" style="width: 30rem;">
     <div class="card-body">
-        <h5 class="card-title">{{bookItem.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{bookItem.author}}</h6>
-        <div class="card-text">{{bookItem.country}}</div>
-        <div class="card-text">{{bookItem.language}}</div>
-        <div class="card-text">{{bookItem.pages}}</div>
-        <div class="card-text">{{bookItem.year}}</div>
-        <a href="#" class="card-link">{{bookItem.imageLink}}</a>
+        <h5 class="card-title">{{bookItem?.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{bookItem?.author}}</h6>
+        <div class="card-text">{{bookItem?.country}}</div>
+        <div class="card-text">{{bookItem?.language}}</div>
+        <div class="card-text">{{bookItem?.pages}}</div>
+        <div class="card-text">{{bookItem?.year}}</div>
+        <a href="#" class="card-link">{{bookItem?.imageLink}}</a>
         <br>
-        <a href="#" class="card-link">{{bookItem.link}}</a>
+        <a href="#" class="card-link">{{bookItem?.link}}</a>
         <br>
-        <button [routerLink]="['cart', bookItem.title]" type="button" class="btn btn-primary">Add to cart</button>
+        <button [routerLink]="['cart', bookItem?.title]" type="button" class="btn btn-primary">Add to cart</button>
     </div>
 </div>
 <router-outlet></router-outlet>
