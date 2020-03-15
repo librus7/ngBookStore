@@ -9,7 +9,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  active: number;
+  private _active: number;
+  get active(): number {
+    return this._active;
+  }
+  set active(value) {
+    if (this._active !== value) {
+      this._active = value;
+      this.fetchBookList();
+    }
+  }
+
   books: Book[];
   books$: Observable<Book[]>;
   constructor(private bookService: BookService) { }

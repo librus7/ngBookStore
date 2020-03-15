@@ -25,7 +25,6 @@ export class BookService {
     const books$ = this.httpClient.get<Book[]>(this.url);
     const sortedByYear$ = books$.pipe(
       map(books => books.sort((x, y) => x.year - y.year))
-      , tap(value => console.log(value))
     );
 
     return sortedByYear$;
@@ -35,7 +34,6 @@ export class BookService {
     const books$ = this.httpClient.get<Book[]>(this.url);
     const sortedByTitle$ = books$.pipe(
       map(books => books.sort((x, y) => x.title > y.title ? 1 : x.title < y.title ? -1 : 0))
-      , tap(value => console.log(value))
     );
 
     return sortedByTitle$;
