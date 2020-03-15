@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SalesComponent } from './sales/sales.component';
 
 
 const routes: Routes = [
   { path: 'book-list', component: BookListComponent },
   { path: 'book-details/:title', component: BookDetailComponent },
+  { path: 'sales', component: SalesComponent },
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: '', redirectTo: '/book-list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
